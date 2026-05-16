@@ -62,8 +62,6 @@ Open [http://localhost:3000](http://localhost:3000)
 
 ---
 
----
-
 ## Project Structure
 
 - `src/app/api/` — Backend API routes (auth, chats, image generation)
