@@ -1,36 +1,97 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Hexframe — AI Creative Studio
+
+**Live Demo:** https://hexframe.vercel.app  
+**GitHub:** https://github.com/sssamridhi/hexframe
+
+Hexframe is a full-stack AI-powered creative platform where users can generate stunning images and 3D renders from text prompts, with a chat-style interface that remembers your session history.
+
+---
+
+## Features
+
+- **Text to Image** — Generate AI images from any text prompt using Pollinations.ai. Chat-style interface with session memory, reference previous images, and download generations.
+- **Text to 3D** — Generate 3D-style renders with a live interactive viewer. Drag to rotate, scroll to zoom.
+- **Gallery** — Personal gallery of all your generations, filterable by mode.
+- **Authentication** — JWT-based signup/login with bcrypt password hashing.
+- **Chat Sessions** — Multiple named chats per mode, stored in MongoDB, accessible anytime.
+
+---
+
+## Tech Stack
+
+| Layer | Technology |
+|---|---|
+| Frontend | Next.js 16 (App Router), TypeScript, Tailwind CSS |
+| Backend | Next.js API Routes, Node.js |
+| Database | MongoDB Atlas + Mongoose |
+| Auth | JWT + bcryptjs |
+| AI | Pollinations.ai (free, no API key) |
+| 3D | Three.js |
+| Deployment | Vercel (frontend + backend), MongoDB Atlas (database) |
+
+---
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
+- Node.js 18+
+- MongoDB Atlas account (free tier)
+
+### Installation
+
+```bash
+git clone https://github.com/sssamridhi/hexframe.git
+cd hexframe
+npm install
+```
+
+### Environment Variables
+
+Create a `.env.local` file in the root:
+- MONGODB_URI=your_mongodb_connection_string
+- JWT_SECRET=your_jwt_secret
+- NEXT_PUBLIC_APP_URL=http://localhost:3000
+
+### Run locally
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Project Structure
 
-## Learn More
+hexframe/
+├── src/
+│   ├── app/
+│   │   ├── api/          # Backend API routes
+│   │   │   ├── auth/     # Signup, login, me
+│   │   │   ├── chats/    # Chat session CRUD
+│   │   │   ├── generate/ # Legacy image generation
+│   │   │   └── generate-3d/ # 3D render generation
+│   │   ├── dashboard/    # Text to Image mode
+│   │   ├── generate-3d/  # Text to 3D mode
+│   │   ├── gallery/      # User gallery
+│   │   ├── modes/        # Mode selection
+│   │   ├── login/        # Login page
+│   │   └── signup/       # Signup page
+│   ├── models/           # Mongoose models (User, Chat, Generation)
+│   ├── lib/              # MongoDB connection, JWT auth
+│   └── context/          # Auth context (React)
+└── README.md
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Screenshots
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Landing Page
+![Landing](https://hexframe.vercel.app/og.png)
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Author
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Built by [@sssamridhi](https://github.com/sssamridhi) 
