@@ -62,33 +62,18 @@ Open [http://localhost:3000](http://localhost:3000)
 
 ---
 
-## Project Structure
-
-hexframe/
-├── src/
-│   ├── app/
-│   │   ├── api/          # Backend API routes
-│   │   │   ├── auth/     # Signup, login, me
-│   │   │   ├── chats/    # Chat session CRUD
-│   │   │   ├── generate/ # Legacy image generation
-│   │   │   └── generate-3d/ # 3D render generation
-│   │   ├── dashboard/    # Text to Image mode
-│   │   ├── generate-3d/  # Text to 3D mode
-│   │   ├── gallery/      # User gallery
-│   │   ├── modes/        # Mode selection
-│   │   ├── login/        # Login page
-│   │   └── signup/       # Signup page
-│   ├── models/           # Mongoose models (User, Chat, Generation)
-│   ├── lib/              # MongoDB connection, JWT auth
-│   └── context/          # Auth context (React)
-└── README.md
-
 ---
 
-## Screenshots
+## Project Structure
 
-### Landing Page
-![Landing](https://hexframe.vercel.app/og.png)
+- `src/app/api/` — Backend API routes (auth, chats, image generation)
+- `src/app/dashboard/` — Text to Image chat interface
+- `src/app/generate-3d/` — Text to 3D mode with Three.js viewer
+- `src/app/gallery/` — Personal image gallery
+- `src/app/modes/` — Mode selection screen
+- `src/models/` — Mongoose models (User, Chat)
+- `src/lib/` — MongoDB connection, JWT utilities
+- `src/context/` — Auth context
 
 ---
 
