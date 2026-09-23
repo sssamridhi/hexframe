@@ -1,80 +1,78 @@
 # Hexframe — AI Creative Studio
 
-**Live Demo:** https://hexframe.vercel.app  
-**GitHub:** https://github.com/sssamridhi/hexframe
+[![CI](https://github.com/sssamridhi/hexframe/actions/workflows/ci.yml/badge.svg)](https://github.com/sssamridhi/hexframe/actions/workflows/ci.yml)
 
-Hexframe is a full-stack AI-powered creative platform where users can generate stunning images and 3D renders from text prompts, with a chat-style interface that remembers your session history.
+**Live Demo:** https://hexframe.vercel.app
 
----
+Hexframe is a full-stack AI creative platform for text-to-image generation, persistent chat history, personal galleries, and interactive visualization of AI-generated 3D-style renders.
 
 ## Features
 
-- **Text to Image** — Generate AI images from any text prompt using Pollinations.ai. Chat-style interface with session memory, reference previous images, and download generations.
-- **Text to 3D** — Generate 3D-style renders with a live interactive viewer. Drag to rotate, scroll to zoom.
-- **Gallery** — Personal gallery of all your generations, filterable by mode.
-- **Authentication** — JWT-based signup/login with bcrypt password hashing.
-- **Chat Sessions** — Multiple named chats per mode, stored in MongoDB, accessible anytime.
-
----
+- **Text to Image** — Generate images from prompts using Pollinations.ai.
+- **3D-Style Render Viewer** — Generate 3D-styled imagery and explore it on an interactive Three.js object with drag-to-rotate and scroll-to-zoom controls.
+- **Gallery** — Save and revisit generations.
+- **Authentication** — JWT signup/login with bcrypt password hashing.
+- **Persistent Chats** — Store sessions in MongoDB.
 
 ## Tech Stack
 
 | Layer | Technology |
 |---|---|
-| Frontend | Next.js 16 (App Router), TypeScript, Tailwind CSS |
+| Frontend | Next.js 16, React, TypeScript, Tailwind CSS |
 | Backend | Next.js API Routes, Node.js |
 | Database | MongoDB Atlas + Mongoose |
-| Auth | JWT + bcryptjs |
-| AI | Pollinations.ai (free, no API key) |
-| 3D | Three.js |
-| Deployment | Vercel (frontend + backend), MongoDB Atlas (database) |
-
----
+| Authentication | JWT + bcryptjs |
+| AI | Pollinations.ai |
+| 3D Visualization | Three.js |
+| Testing | Vitest |
+| CI | GitHub Actions |
+| Deployment | Vercel + MongoDB Atlas |
 
 ## Getting Started
-
-### Prerequisites
-- Node.js 18+
-- MongoDB Atlas account (free tier)
-
-### Installation
 
 ```bash
 git clone https://github.com/sssamridhi/hexframe.git
 cd hexframe
 npm install
-```
-
-### Environment Variables
-
-Create a `.env.local` file in the root:
-- MONGODB_URI=your_mongodb_connection_string
-- JWT_SECRET=your_jwt_secret
-- NEXT_PUBLIC_APP_URL=http://localhost:3000
-
-### Run locally
-
-```bash
+cp .env.example .env.local
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000)
+Environment variables:
 
----
+```env
+MONGODB_URI=your_mongodb_connection_string
+JWT_SECRET=your_long_random_secret
+NEXT_PUBLIC_APP_URL=http://localhost:3000
+```
+
+## Testing
+
+```bash
+npm test
+npm run test:watch
+```
+
+The first unit test suite covers JWT signing/verification and Bearer-token parsing.
+
+## Continuous Integration
+
+GitHub Actions runs linting, unit tests, and a production build on pushes and pull requests to `main`.
 
 ## Project Structure
 
-- `src/app/api/` — Backend API routes (auth, chats, image generation)
-- `src/app/dashboard/` — Text to Image chat interface
-- `src/app/generate-3d/` — Text to 3D mode with Three.js viewer
-- `src/app/gallery/` — Personal image gallery
-- `src/app/modes/` — Mode selection screen
-- `src/models/` — Mongoose models (User, Chat)
-- `src/lib/` — MongoDB connection, JWT utilities
-- `src/context/` — Auth context
+- `src/app/api/` — auth, chats, gallery, and generation routes
+- `src/app/dashboard/` — image generation interface
+- `src/app/generate-3d/` — 3D-style render viewer
+- `src/models/` — Mongoose models
+- `src/lib/` — MongoDB and JWT utilities
+- `tests/` — unit tests
+- `.github/workflows/` — CI
 
----
+## Current Limitation
+
+The 3D mode visualizes AI-generated 3D-style imagery on an interactive Three.js mesh. It does **not** generate a true 3D mesh or model from text.
 
 ## Author
 
-Built by [@sssamridhi](https://github.com/sssamridhi) 
+Built by [@sssamridhi](https://github.com/sssamridhi)
